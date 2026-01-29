@@ -1,0 +1,441 @@
+/* =====================================================
+   KAPALI KALE TARAFTARLAR DERNEĞİ - CSS
+   Çoklu Sayfa, Daima Görünür Menü, Sarı-Kırmızı-Siyah
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Ana Renkler (Sadece İstenen Renkler) */
+    --color-black: #0b0b0b;
+    --color-dark: #1a1a1a;
+    --color-red: #b30000;
+    --color-red-dark: #8b0000;
+    --color-yellow: #FFD700; /* Sarı eklendi */
+    --color-white: #ffffff;
+    --color-gray: #e0e0e0; /* Okunabilirlik için çok açık gri/beyaz tonu */
+    
+    /* Gradient'ler */
+    --gradient-primary: linear-gradient(135deg, #b30000 0%, #8b0000 100%);
+    --gradient-yellow: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    
+    /* Fontlar */
+    --font-primary: 'Montserrat', sans-serif;
+    
+    /* Spacing */
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    
+    /* Transitions */
+    --transition-normal: 0.3s ease;
+}
+
+body {
+    /* Mevcut ayarların */
+    font-family: var(--font-primary);
+    background-color: var(--color-black);
+    color: var(--color-white);
+    line-height: 1.6;
+    padding-top: 140px; /* Header boşluğu */
+
+    /* YENİ EKLENENLER: Footer'ı alta itmek için */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ekranın tamamını kapla */
+}
+
+.content-section {
+    /* Bu kod, içeriğin kalan tüm boşluğu kaplamasını sağlar.
+       Böylece Footer'ı en aşağı iter. */
+    flex: 1;
+    
+    /* Mevcut padding ayarın */
+    padding: var(--spacing-md) 0;
+    min-height: auto; /* Eski min-height varsa iptal et */
+}
+/* =====================================================
+   HEADER & NAVBAR (SABİT & DAİMA GÖRÜNÜR)
+   ===================================================== */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #000000;
+    border-bottom: 3px solid var(--color-red);
+    padding: 1rem 0;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.1); /* Sarı gölge */
+}
+
+.container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-wrapper {
+    display: flex;
+    flex-direction: column; /* Mobilde alt alta */
+    align-items: center;
+    gap: 1rem;
+}
+
+/* =============================
+   LOGO GÖRSEL AYARLARI
+   ============================= */
+
+.logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Link çizgisini kaldır */
+}
+
+.site-logo {
+    max-height: 60px; /* Logonun yüksekliğini buradan ayarlayabilirsin */
+    width: auto;      /* Genişlik orantılı kalsın */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Mouse ile üzerine gelince hafif büyüsün */
+.site-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Mobilde logo çok büyükse biraz küçültelim */
+@media (max-width: 768px) {
+    .site-logo {
+        max-height: 45px;
+    }
+}
+/* Navigation Menu - ASLA GİZLENMEZ */
+.nav-menu {
+    display: flex;
+    flex-wrap: wrap; /* Sığmazsa aşağı kayar */
+    justify-content: center;
+    gap: 15px;
+}
+
+.nav-link {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-white);
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--color-black);
+    background-color: var(--color-yellow);
+    box-shadow: 0 0 10px var(--color-yellow);
+}
+
+
+/* =====================================================
+   GENEL SAYFA YAPILARI
+   ===================================================== */
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    color: var(--color-yellow);
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--color-red);
+    display: inline-block;
+}
+
+.content-section {
+    padding: var(--spacing-md) 0;
+    min-height: 60vh;
+}
+
+/* =====================================================
+   FORMLAR (DEPLASMAN & İLETİŞİM)
+   ===================================================== */
+.form-wrapper {
+    background: var(--color-dark);
+    padding: 2rem;
+    border: 1px solid var(--color-red);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group { margin-bottom: 1.5rem; }
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-yellow);
+    font-weight: 600;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 1rem;
+    background: #000;
+    border: 1px solid #333;
+    color: white;
+    font-family: var(--font-primary);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-yellow);
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 1rem;
+    background: var(--color-red);
+    color: white;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+button[type="submit"]:hover {
+    background: var(--color-red-dark);
+}
+
+/* Radio Kartları */
+.radio-cards { display: flex; gap: 1rem; margin-top: 0.5rem; }
+
+.radio-card {
+    flex: 1;
+    background: #000;
+    border: 1px solid #333;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.radio-card input { display: none; } /* Radio butonu gizle, karta tıklat */
+
+/* Seçili Durum */
+.radio-card:has(input:checked) {
+    background: var(--color-red);
+    border-color: var(--color-red);
+}
+
+/* Disabled Durum (JS ile eklenecek) */
+.radio-card.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    border-color: #444;
+}
+
+/* Uyarı Mesajları */
+.warning-box {
+    background-color: rgba(255, 215, 0, 0.1); /* Sarı transparan */
+    border: 1px solid var(--color-yellow);
+    color: var(--color-yellow);
+    padding: 1rem;
+    margin-top: 1rem;
+    display: none; /* JS ile açılacak */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* =====================================================
+   SOSYAL MEDYA İKON DÜZENLEMESİ
+   ===================================================== */
+
+.contact-social h4 {
+    color: var(--color-white);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-red);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px; /* İkonlar arası boşluk */
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;        /* Kutu Genişliği */
+    height: 50px;       /* Kutu Yüksekliği */
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 8px; /* Köşeleri yumuşatma */
+    color: var(--color-white);
+    transition: all 0.3s ease;
+    text-decoration: none; /* Alt çizgiyi kaldır */
+}
+
+/* İkonun (SVG) kendisinin boyutu */
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor; /* Yazı rengini (white) alır */
+}
+
+/* Üzerine gelince (Hover) Efekti */
+.social-icon:hover {
+    background-color: var(--color-red); /* Kırmızı arka plan */
+    border-color: var(--color-red);
+    color: var(--color-white);
+    transform: translateY(-5px); /* Yukarı zıplama */
+    box-shadow: 0 5px 15px rgba(179, 0, 0, 0.4); /* Gölge */
+}
+
+/* =====================================================
+   HARİTA ALANI (KESİN ÇÖZÜM)
+   ===================================================== */
+
+/* ===============================
+   MAP PLACEHOLDER (SADECE BLUR)
+   =============================== */
+
+.map-placeholder {
+    margin-top: 2rem;
+    position: relative;
+    overflow: hidden;
+
+    background-image: url('stadyum.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #333;
+
+    border: 1px solid #333;
+    padding: 4rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* BLUR KATMANI (ŞEFFAF) */
+.map-placeholder::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: transparent;
+    backdrop-filter: blur(0px);
+
+    transition: backdrop-filter 0.4s ease;
+    z-index: 1;
+}
+
+/* İçerik üstte kalsın */
+.map-placeholder * {
+    position: relative;
+    z-index: 2;
+}
+
+/* HOVER: SADECE BLUR */
+.map-placeholder:hover::before {
+    backdrop-filter: blur(5px);
+}
+
+.map-placeholder:hover {
+    border-color: var(--color-yellow);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+}
+
+/* ===============================
+   ICON
+   =============================== */
+
+.map-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+    transition: transform 0.3s ease;
+}
+
+.map-placeholder:hover .map-icon {
+    transform: scale(1.1);
+}
+
+/* ===============================
+   TITLE & TEXT
+   =============================== */
+
+.map-title {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0,0,0,1);
+}
+
+.map-text {
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0,0,0,1);
+}
+
+/* ===============================
+   BUTTON
+   =============================== */
+
+.btn-map {
+    display: inline-block;
+    padding: 1rem 2rem;
+
+    background-color: rgba(179, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+
+    border: 1px solid var(--color-red);
+    color: var(--color-white);
+
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    border-radius: 4px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-map:hover {
+    background-color: var(--color-red);
+    box-shadow: 0 0 20px var(--color-red);
+    color: #fff;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (min-width: 992px) {
+    .nav-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    body { padding-top: 100px; }
+}
+
+@media (max-width: 600px) {
+    .radio-cards { flex-direction: column; }
+    .page-title { font-size: 1.8rem; }
+    .nav-menu { gap: 10px; }
+    .nav-link { font-size: 0.8rem; padding: 6px 10px; }
+}
